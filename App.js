@@ -45,19 +45,25 @@ export default function App() {
     if (VerificaVitoria(novoTabuleiro)) {
       setTimeout(() => {
         Alert.alert(
-          'Vitória!', 
+          'Vitória!',
           `Jogador ${jogador} ganhou!\nParabéns! 🎉🎉🎉🎉`
-        );        LimpaImagem();
+        ); LimpaImagem();
       }, 100);
-    } else {
-      setContador(contador + 1); 
+    } else if (contador == 9) {
+      Alert.alert(
+        'Empate!',
+        `Deu VELHA\n👵👵👵👵`
+      ); LimpaImagem();
+    }
+    else {
+      setContador(contador + 1);
     }
   }
   function VerificaVitoria(board) {
     const combinacoes = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], 
-      [0, 3, 6], [1, 4, 7], [2, 5, 8], 
-      [0, 4, 8], [2, 4, 6]             
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
     ];
 
     for (const [a, b, c] of combinacoes) {
@@ -88,7 +94,7 @@ export default function App() {
           source={require('./assets/Jogodavelha.png')} // Caminho da sua imagem
           style={styles.imagemJogodaVelha}
         />
-        <Text style={styles.titulo}>Jogo da Velha</Text>
+        <Text style={styles.titulo}>Jogo da Velha 👵</Text>
       </View>
       <View style={styles.meio}>
         <View style={styles.jogo}>
@@ -238,12 +244,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  textoBotao:{
+  textoBotao: {
     padding: 3,
     fontSize: 20,
     color: 'black',
     fontWeight: 'bold',
-    backgroundColor: '#ECECEC',
+    backgroundColor: '#FFC107',
     borderRadius: 10,
   },
   button: {
